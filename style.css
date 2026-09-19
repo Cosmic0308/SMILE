@@ -1,0 +1,1342 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #09070d;
+  color: white;
+  font-family: Georgia, serif;
+}
+
+/* All scenes are hidden */
+.scene {
+  display: none;
+  min-height: 100vh;
+}
+
+/* Only the current scene is visible */
+.scene.active {
+  display: flex;
+}
+
+/* ---------------- OPENING ---------------- */
+#opening {
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(
+    circle at 50% 45%,
+    #2b2040 0%,
+    #120d1d 45%,
+    #050408 100%
+  );
+}
+
+/* Magical glow behind the content */
+#opening::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(190, 150, 70, 0.1), transparent 65%);
+  border-radius: 50%;
+  animation: magicalGlow 5s ease-in-out infinite;
+}
+
+/* Floating magical particles */
+#opening::after {
+  content: "✦     ✧          ✦      ·       ✧     ✦          ·      ✧";
+  position: absolute;
+  width: 100%;
+  top: 15%;
+  left: 0;
+  color: #d6b36a;
+  font-size: 18px;
+  letter-spacing: 15px;
+  opacity: 0.35;
+  animation: floatingMagic 7s linear infinite;
+}
+
+/* Main content */
+.opening-content {
+  position: relative;
+  z-index: 2;
+  padding: 50px 60px;
+  background: rgba(10, 7, 16, 0.35);
+  border: 1px solid rgba(214, 179, 106, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 30px rgba(214, 179, 106, 0.03);
+  animation: openingAppear 1.5s ease;
+}
+
+/* Small text */
+.small-text {
+  color: #d6b36a;
+  font-size: 17px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 12px rgba(214, 179, 106, 0.4);
+}
+
+/* Main heading */
+h1 {
+  color: #eee7d9;
+  font-size: 46px;
+  font-weight: normal;
+  line-height: 1.25;
+  margin-bottom: 22px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.08),
+    0 0 30px rgba(214, 179, 106, 0.08);
+}
+
+/* Description */
+.intro-text {
+  color: #aaa3b1;
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+/* Start button */
+#startBtn {
+  padding: 15px 32px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(15, 11, 22, 0.8);
+  color: #dfc477;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(214, 179, 106, 0.08);
+  transition: all 0.35s ease;
+}
+
+#startBtn:hover {
+  background: #7b45ad;
+  color: white;
+  box-shadow: 0 0 25px rgba(214, 179, 106, 0.35),
+    0 0 60px rgba(214, 179, 106, 0.1);
+  transform: translateY(-3px);
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes openingAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes magicalGlow {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatingMagic {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+  75% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- LEVEL 1 ---------------- */
+#level1 {
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(
+    circle at center,
+    #261b36 0%,
+    #100b18 48%,
+    #050408 100%
+  );
+}
+
+/* Ambient magical glow */
+.level1-background {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.level1-background::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(214, 179, 106, 0.08),
+    transparent 70%
+  );
+  animation: letterGlow 5s ease-in-out infinite;
+}
+
+/* Floating particles */
+.magic-particle {
+  position: absolute;
+  color: #d6b36a;
+  font-size: 18px;
+  opacity: 0.5;
+  animation: particleFloat 5s ease-in-out infinite;
+}
+
+.p1 {
+  top: 20%;
+  left: 18%;
+}
+
+.p2 {
+  top: 65%;
+  right: 20%;
+  animation-delay: 1.5s;
+}
+
+.p3 {
+  bottom: 18%;
+  left: 25%;
+  animation-delay: 3s;
+}
+
+/* Letter */
+.letter-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 600px;
+  perspective: 1000px;
+}
+
+.letter {
+  position: relative;
+  padding: 55px 55px 40px;
+  background: linear-gradient(135deg, #f3e7c8, #e8d7b1);
+  color: #302719;
+  border-radius: 3px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(214, 179, 106, 0.12);
+  animation: letterOpen 1.2s ease;
+}
+
+/* Slight old-paper border */
+.letter::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(90, 65, 30, 0.25);
+  pointer-events: none;
+}
+
+/* Magical seal */
+.letter-seal {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #3a263e;
+  color: #d6b36a;
+  border: 2px solid #c5a45f;
+  font-size: 22px;
+  box-shadow: 0 0 20px rgba(214, 179, 106, 0.25);
+}
+
+/* Header */
+.letter-header {
+  text-align: center;
+  color: #765b2c;
+  font-size: 14px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.letter-header span {
+  margin: 0 10px;
+}
+
+/* Divider */
+.letter-line {
+  width: 70%;
+  height: 1px;
+  margin: 0 auto 30px;
+  background: linear-gradient(to right, transparent, #a98b55, transparent);
+}
+
+/* Message */
+.letter-content {
+  font-size: 19px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.letter-content p {
+  margin-bottom: 20px;
+}
+
+.letter-content p:first-child {
+  font-size: 25px;
+  font-weight: bold;
+  color: #4a3420;
+}
+
+/* Footer */
+.letter-footer {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 10px 0 25px;
+  color: #a4854c;
+}
+
+/* Button */
+.letter button {
+  display: block;
+  margin: auto;
+  padding: 13px 25px;
+  background: #302719;
+  color: #eee1c3;
+  border: none;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  transition: 0.35s ease;
+}
+
+.letter button:hover {
+  background: #4a3824;
+  box-shadow: 0 0 20px rgba(90, 60, 20, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes letterOpen {
+  from {
+    opacity: 0;
+    transform: rotateX(12deg) translateY(30px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(0) translateY(0) scale(1);
+  }
+}
+
+@keyframes letterGlow {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes particleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translateY(-25px);
+    opacity: 0.7;
+  }
+}
+
+/* ---------------- LEVEL 2 ---------------- */
+#level2 {
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(
+    circle at center,
+    #241a35 0%,
+    #0f0a17 55%,
+    #050408 100%
+  );
+}
+
+.level2-content {
+  width: 90%;
+  max-width: 700px;
+  animation: level2Appear 1s ease;
+}
+
+.level-label {
+  color: #d6b36a;
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+#level2 h2 {
+  color: #eee7d9;
+  font-size: 40px;
+  font-weight: normal;
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px rgba(214, 179, 106, 0.15);
+}
+
+.level2-text {
+  color: #c8c1cc;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.level2-hint {
+  color: #817988;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+/* Smile area */
+#smileArea {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border: 1px solid rgba(236, 201, 126, 0.15);
+  border-radius: 10px;
+  background: radial-gradient(
+    circle,
+    rgba(214, 179, 106, 0.04),
+    transparent 65%
+  );
+  box-shadow: inset 0 0 40px rgba(138, 67, 185, 0.25);
+}
+
+/* The smile */
+#smile {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 55px;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 10px rgba(255, 210, 100, 0.3));
+  transition: left 0.4s ease, top 0.4s ease, transform 0.2s ease;
+}
+
+#smile:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+/* Counter */
+#catchCounter {
+  margin-top: 20px;
+  color: #a9a1b0;
+  font-size: 15px;
+}
+
+/* Smile message */
+#smileMessage {
+  max-width: 500px;
+  text-shadow: 0 0 10px rgba(138, 67, 185, 0.25);
+  margin: 25px auto 20px;
+  color: #cfc7d5;
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Next chapter button */
+#nextChapterBtn {
+  padding: 13px 25px;
+  background: rgba(20, 15, 28, 0.8);
+  color: #d6b36a;
+  border: 1px solid #a98b55;
+  border-radius: 5px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease, 0.3s ease;
+}
+
+#nextChapterBtn:hover {
+  background: #c9a75c;
+  color: #0b0810;
+  transform: translateY(-2px);
+}
+
+/* When Level 2 is completed */
+#level2.completed #smileMessage {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#level2.completed #nextChapterBtn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Animation */
+@keyframes level2Appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- LEVEL 3 ---------------- */
+#level3 {
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(
+    circle at center,
+    #281d3b 0%,
+    #100b18 55%,
+    #050408 100%
+  );
+}
+
+.level3-content {
+  width: 90%;
+  max-width: 650px;
+  animation: level3Appear 1s ease;
+}
+
+#level3 h2 {
+  color: #eee7d9;
+  font-size: 38px;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.level3-text {
+  color: #aaa3b1;
+  font-size: 17px;
+  margin-bottom: 25px;
+}
+
+/* Magical area */
+#sparkleArea {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sparkle */
+#level3Sparkle {
+  font-size: 70px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 15px rgba(255, 220, 120, 0.7));
+  animation: sparklePulse 1.5s ease-in-out infinite;
+}
+
+/* Key */
+#magicKey {
+  position: absolute;
+  font-size: 65px;
+  opacity: 0;
+  transform: scale(0);
+  cursor: pointer;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  filter: drop-shadow(0 0 18px rgba(214, 179, 106, 0.7));
+}
+
+/* When sparkle is clicked */
+#level3.key-found #level3Sparkle {
+  opacity: 0;
+  transform: scale(2);
+}
+
+#level3.key-found #magicKey {
+  opacity: 1;
+  transform: scale(1);
+  animation: keyFloat 2s ease-in-out infinite;
+}
+
+/* Message */
+#keyMessage {
+  color: #cfc7d5;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Button */
+#takeKeyBtn {
+  margin-top: 20px;
+  padding: 13px 25px;
+  background: rgba(20, 15, 28, 0.8);
+  color: #d6b36a;
+  border: 1px solid #a98b55;
+  border-radius: 5px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease, background 0.3s ease;
+}
+
+#takeKeyBtn:hover {
+  background: #c9a75c;
+  color: #0b0810;
+  transform: translateY(-2px);
+}
+
+/* Completed state */
+#level3.key-found #keyMessage {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#level3.key-found #takeKeyBtn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Animations */
+@keyframes level3Appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sparklePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes keyFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ---------------- LEVEL 4 ---------------- */
+#level4 {
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(
+    circle at center,
+    #21172f 0%,
+    #0d0914 55%,
+    #030306 100%
+  );
+}
+
+.level4-content {
+  width: 90%;
+  max-width: 650px;
+  animation: level4Appear 1s ease;
+}
+
+#level4 h2 {
+  color: #eee7d9;
+  font-size: 38px;
+  font-weight: normal;
+  margin-bottom: 22px;
+}
+
+.level4-text {
+  color: #aaa3b1;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 5px;
+}
+
+/* ---------------- DOOR AREA ---------------- */
+.door-area {
+  width: 250px;
+  height: 300px;
+  margin: 30px auto 25px;
+  perspective: 1000px;
+}
+
+/* Door frame */
+.door-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #3a2618, #72502e, #3a2618);
+  border: 2px solid #9b7946;
+  box-shadow: 0 0 25px rgba(214, 179, 106, 0.12),
+    inset 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+/* Magical space behind the door */
+.doorway-light {
+  position: absolute;
+  inset: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #c8a45c 0%, #5d477c 30%, #151020 70%);
+  color: #fff2b5;
+  font-size: 50px;
+  box-shadow: inset 0 0 50px rgba(214, 179, 106, 0.5);
+  animation: doorwayGlow 2.5s ease-in-out infinite;
+}
+
+/* ---------------- ACTUAL DOOR ---------------- */
+#magicDoor {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #24170f, #4b301b, #2a1b11);
+  border: 2px solid #8d6b3c;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7), 5px 0 15px rgba(0, 0, 0, 0.5);
+  transition: transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 1s ease;
+  transform-style: preserve-3d;
+  z-index: 2;
+}
+
+/* Door panels */
+.door-panel {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  border: 2px solid #704c29;
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+.top-panel {
+  top: 18px;
+  height: 75px;
+}
+
+.middle-panel {
+  top: 105px;
+  height: 75px;
+}
+
+.bottom-panel {
+  bottom: 18px;
+  height: 75px;
+}
+
+/* Door handle */
+.door-handle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #c7a45e;
+  color: #3a2718;
+  font-size: 9px;
+  box-shadow: 0 0 10px rgba(214, 179, 106, 0.4);
+}
+
+/* ---------------- UNLOCK ---------------- */
+#unlockBtn {
+  padding: 13px 27px;
+  background: rgba(20, 15, 28, 0.8);
+  color: #d6b36a;
+  border: 1px solid #a98b55;
+  border-radius: 5px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#unlockBtn:hover {
+  background: #c9a75c;
+  color: #0b0810;
+  transform: translateY(-2px);
+}
+
+/* ---------------- OPENED DOOR ---------------- */
+#level4.unlocked #magicDoor {
+  transform: rotateY(-105deg);
+  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+#level4.unlocked #unlockBtn {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+/* ---------------- FINAL MESSAGE ---------------- */
+#almostThere {
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+#almostThere p {
+  color: #d6b36a;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+#almostThere .final-hint {
+  color: #aaa3b1;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+#finalChapterBtn {
+  padding: 12px 25px;
+  background: #302719;
+  color: #eee1c3;
+  border: none;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#finalChapterBtn:hover {
+  background: #4a3824;
+  transform: translateY(-2px);
+}
+
+/* Reveal message after opening */
+#level4.unlocked #almostThere {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes doorwayGlow {
+  0%,
+  100% {
+    box-shadow: inset 0 0 35px rgba(214, 179, 106, 0.35);
+  }
+
+  50% {
+    box-shadow: inset 0 0 65px rgba(214, 179, 106, 0.7);
+  }
+}
+
+@keyframes level4Appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   LEVEL 5
+========================= */
+#level5 {
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center,#241533 0%,#100918 50%,#040307 100%);
+}
+
+.level5-content {
+  position: relative;
+  width: 95%;
+  max-width: 850px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+/* =========================
+   BATTLE AREA
+========================= */
+.battle-area {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 280px;
+  margin: 20px auto;
+  border: 1px solid rgba(214, 179, 106, 0.15);
+  background: radial-gradient(circle at center,rgba(90, 50, 120, 0.12),transparent 70%);
+  overflow: hidden;
+}
+
+/* =========================
+   BOSS
+========================= */
+#boss {
+  position: absolute;
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.25s ease, opacity 0.5s ease;
+}
+
+.boss-health {
+  width: 110px;
+  height: 8px;
+  margin: 0 auto 12px;
+  background: #211822;
+  border: 1px solid #5c405c;
+}
+
+#bossHealthBar {
+  width: 100%;
+  height: 100%;
+  background: #7c3f8c;
+  transition: width 0.4s ease;
+}
+
+/* Boss head */
+.boss-character {
+  position: relative;
+  width: 90px;
+  height: 135px;
+  margin: auto;
+}
+
+/* Head */
+.boss-head {
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 55px;
+  background: #16121d;
+  border: 2px solid #72507a;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(150, 80, 180, 0.4);
+}
+
+/* Eyes */
+.boss-eye {
+  position: absolute;
+  top: 23px;
+  width: 7px;
+  height: 4px;
+  background: #b56cff;
+  box-shadow: 0 0 8px #b56cff;
+}
+
+.boss-eye.left-eye {
+  left: 13px;
+}
+
+.boss-eye.right-eye {
+  right: 13px;
+}
+
+/* Body */
+.boss-body {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(160deg, #251b2b, #08070b);
+  clip-path: polygon(30% 0, 70% 0, 100% 100%, 0 100%);
+  border: 1px solid #49304f;
+  box-shadow: 0 0 25px rgba(100, 40, 130, 0.25);
+}
+
+/* Boss arms */
+.boss-arm {
+  position: absolute;
+  width: 15px;
+  height: 65px;
+  background: #17121c;
+  top: 15px;
+  border-radius: 10px;
+}
+
+.boss-arm.left-arm {
+  left: -8px;
+  transform: rotate(20deg);
+}
+
+.boss-arm.right-arm {
+  right: -8px;
+  transform: rotate(-20deg);
+}
+
+/* =========================
+   PLAYER WIZARD
+======================== */
+#playerWizard {
+  position: absolute;
+  left: 12%;
+  bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Whole wizard */
+.wizard {
+  position: relative;
+  width: 80px;
+  height: 150px;
+}
+
+/* Head */
+.wizard-head {
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 50px;
+}
+
+/* Face */
+.wizard-face {
+  position: absolute;
+  bottom: 0;
+  width: 42px;
+  height: 42px;
+  background: #e2c0a2;
+  border-radius: 45% 45% 48% 48%;
+  border: 1px solid #9d765d;
+}
+
+/* Hair */
+.wizard-hair {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 2px;
+  width: 42px;
+  height: 20px;
+  background: #d8d1c5;
+  border-radius: 50% 50% 30% 30%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Eyes */
+.wizard-eye {
+  position: absolute;
+  top: 19px;
+  width: 4px;
+  height: 4px;
+  background: #17131a;
+  border-radius: 50%;
+}
+
+.wizard-eye.left-eye {
+  left: 11px;
+}
+
+.wizard-eye.right-eye {
+  right: 11px;
+}
+
+/* =========================
+   ROBE
+========================= */
+.wizard-body {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 105px;
+}
+
+/* Robe */
+.wizard-robe {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 90px;
+  background: linear-gradient(100deg, #171522, #292538, #100e18);
+  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+  border: 1px solid #4d465b;
+}
+
+/* Arm */
+.wizard-arm {
+  position: absolute;
+  right: -2px;
+  top: 20px;
+  width: 14px;
+  height: 60px;
+  background: #171522;
+  transform: rotate(-55deg);
+  transform-origin: top center;
+  border-radius: 10px;
+}
+
+/* =========================
+   WAND
+========================= */
+.wizard-wand {
+  position: absolute;
+  right: -38px;
+  top: 5px;
+  width: 55px;
+  height: 5px;
+  background: linear-gradient(to right, #4b2c18, #b78345, #5c351d);
+  border-radius: 5px;
+  transform: rotate(-35deg);
+  box-shadow: 0 0 5px rgba(214, 179, 106, 0.5);
+}
+
+/* Wand tip */
+.wizard-wand::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: -3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d6b36a;
+  box-shadow: 0 0 8px #d6b36a, 0 0 18px rgba(214, 179, 106, 0.6);
+}
+
+/* =========================
+   CHARACTER NAME
+========================= */
+.character-name {
+  margin-top: 8px;
+  color: #b8a8c5;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+/* =========================
+   SPELL AREA
+========================= */
+#spellArea {
+  margin-top: 5px;
+}
+
+#spellArea > p {
+  color: #a99caf;
+  margin-bottom: 12px;
+}
+
+.spell-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.spellBtn {
+  padding: 10px 16px;
+  background: rgba(20, 14, 27, 0.9);
+  color: #d9c9e2;
+  border: 1px solid #5b4764;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.spellBtn:hover {
+  transform: translateY(-2px);
+  border-color: #c5a45f;
+  box-shadow: 0 0 15px rgba(214, 179, 106, 0.2);
+}
+
+/* =========================
+   BATTLE MESSAGE
+======================== */
+#battleMessage {
+  min-height: 25px;
+  margin-top: 15px;
+  color: #d6b36a;
+  font-size: 16px;
+}
+
+/* =========================
+   BOSS DEFEATED
+========================= */
+#bossDefeated {
+  display: none;
+  margin-top: 15px;
+  animation: defeatAppear 0.8s ease;
+}
+
+#bossDefeated h3 {
+  color: #d6b36a;
+  margin-bottom: 10px;
+}
+
+#bossDefeated p {
+  color: #aaa0b0;
+  margin-bottom: 15px;
+}
+
+#finalMessageBtn {
+  padding: 11px 22px;
+  background: #302719;
+  color: #eee1c3;
+  border: 1px solid #c9a75c;
+  border-radius: 4px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+}
+
+@keyframes defeatAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   SPELL EFFECT
+========================= */
+#spellEffect {
+    position: absolute;
+    left: 18%;
+    top: 48%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Basic magical projectile */
+.spell-projectile {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: spellFly 0.45s linear forwards;
+}
+
+/* Expelliarmus */
+.spell-expelliarmus {
+    background: #dff8ff;
+    box-shadow:0 0 8px #ffffff,0 0 18px #75dfff,0 0 35px #4fc3ff;
+}
+
+/* Incendio */
+.spell-incendio {
+    background: #fff3b0;
+    box-shadow:0 0 10px #fff,0 0 20px #ff9d2e,0 0 40px #ff4b00;
+}
+
+/* Final green spell */
+.spell-avada {
+    width: 25px;
+    height: 25px;
+    background: #baffc8;
+    box-shadow:0 0 10px #ffffff, 0 0 25px #39ff68, 0 0 55px #00d83a,0 0 90px rgba(0, 255, 70, 0.6);
+}
+
+@keyframes spellFly {
+    0% {
+        left: 0;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 520px;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}

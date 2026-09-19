@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Little Magical Journey</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- OPENING SCENE -->
+    <section id="opening" class="scene active">
+      <div class="opening-content">
+        <p class="small-text">✨ A little something for you ✨</p>
+
+        <h1>Here's a small thing<br />just for you.</h1>
+
+        <p class="intro-text">Just a little journey.</p>
+
+        <button id="startBtn">🪄 Start the Journey</button>
+      </div>
+    </section>
+
+    <!-- LEVEL 1 -->
+    <section id="level1" class="scene">
+      <div class="level1-background">
+        <div class="magic-particle p1">✦</div>
+        <div class="magic-particle p2">✧</div>
+        <div class="magic-particle p3">✦</div>
+
+        <div class="letter-wrapper">
+          <div class="letter">
+            <div class="letter-seal">✦</div>
+
+            <div class="letter-header">
+              <span>✦</span>
+              A LITTLE LETTER
+              <span>✦</span>
+            </div>
+
+            <div class="letter-line"></div>
+
+            <div class="letter-content">
+              <p>Hey.</p>
+              <p>I know things haven't been feeling great lately.</p>
+              <p>
+                So for the next few minutes, you don't have to think about any
+                of that.
+              </p>
+              <p>This little thing is just for you. ❤️</p>
+            </div>
+
+            <div class="letter-footer">
+              <span>✦</span>
+              <span>✦</span>
+              <span>✦</span>
+            </div>
+
+            <button id="openLevel2">Continue the Journey →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEVEL 2 -->
+    <section id="level2" class="scene">
+      <div class="level2-content">
+        <p class="level-label">✦ SECOND CHAPTER ✦</p>
+
+        <h2>Catch the Smile 😄</h2>
+
+        <p class="level2-text">
+          There's a little bit of magic floating around...
+        </p>
+
+        <p class="level2-hint">Catch it before it disappears.</p>
+
+        <div id="smileArea">
+          <div id="smile">😄</div>
+        </div>
+
+        <p id="catchCounter">Smiles caught: 0 / 5</p>
+
+        <p id="smileMessage">
+          Maybe things aren't perfect right now. But that doesn't mean you're
+          not allowed to have little happy moments along the way. ❤️
+        </p>
+
+        <button id="nextChapterBtn">Continue to the Next Chapter →</button>
+      </div>
+    </section>
+
+    <!-- LEVEL 3 -->
+    <section id="level3" class="scene">
+      <div class="level3-content">
+        <p class="level-label">✦ THIRD CHAPTER ✦</p>
+
+        <h2>Wait... what was that?</h2>
+
+        <p class="level3-text">Something seems to have been left behind.</p>
+
+        <div id="sparkleArea">
+          <div id="level3Sparkle">✨</div>
+          <div id="magicKey">🔑</div>
+        </div>
+
+        <p id="keyMessage">
+          Looks like this belongs somewhere... ✨ <br />
+          “Funny how something so small can lead you somewhere unexpected.” “I
+          wonder what's waiting on the other side…” 🔑✨
+        </p>
+
+        <button id="takeKeyBtn">Take the Key →</button>
+      </div>
+    </section>
+
+    <!-- LEVEL 4 -->
+    <section id="level4" class="scene">
+      <div class="level4-content">
+        <p class="level-label">✦ FOURTH CHAPTER ✦</p>
+
+        <h2>Something is waiting...</h2>
+
+        <p class="level4-text">
+          Funny how something so small can lead you somewhere unexpected.
+        </p>
+
+        <p class="level4-text">
+          I wonder what's waiting on the other side... 🔑✨
+        </p>
+
+        <!-- DOOR -->
+        <div class="door-area">
+          <div class="door-frame">
+            <!-- Magical light behind door -->
+            <div class="doorway-light">✦</div>
+
+            <!-- Actual door -->
+            <div id="magicDoor">
+              <div class="door-panel top-panel"></div>
+              <div class="door-panel middle-panel"></div>
+              <div class="door-panel bottom-panel"></div>
+              <div class="door-handle">✦</div>
+            </div>
+          </div>
+        </div>
+
+        <button id="unlockBtn">🔑 Unlock the Door</button>
+
+        <div id="almostThere">
+          <p>Well... I guess there's no turning back now. ✨</p>
+
+          <p class="final-hint">One last chapter awaits.</p>
+
+          <button id="finalChapterBtn">Enter →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEVEL 5 -->
+    <section id="level5" class="scene">
+      <div class="level5-content">
+        <p class="level-label">✦ FINAL CHAPTER ✦</p>
+
+        <h2>The Final Battle</h2>
+
+        <p class="level5-text">One last challenge stands in your way.</p>
+
+        <p class="level5-hint">Choose your spell wisely.</p>
+
+        <!-- BATTLE AREA -->
+        <div class="battle-area">
+          <!-- BOSS -->
+          <div id="boss">
+            <div class="boss-health">
+              <div id="bossHealthBar"></div>
+            </div>
+
+            <div class="boss-character">
+              <div class="boss-head">
+                <div class="boss-eye left-eye"></div>
+                <div class="boss-eye right-eye"></div>
+              </div>
+
+              <div class="boss-body">
+                <div class="boss-arm left-arm"></div>
+                <div class="boss-arm right-arm"></div>
+              </div>
+            </div>
+
+            <p class="character-name">THE DARK ONE</p>
+          </div>
+
+          <!-- PLAYER WIZARD -->
+          <div id="playerWizard">
+            <div class="wizard">
+              <div class="wizard-head">
+                <div class="wizard-hair"></div>
+
+                <div class="wizard-face">
+                  <div class="wizard-eye left-eye"></div>
+                  <div class="wizard-eye right-eye"></div>
+                </div>
+              </div>
+
+              <div class="wizard-body">
+                <div class="wizard-robe"></div>
+
+                <div class="wizard-arm"></div>
+
+                <div class="wizard-wand"></div>
+              </div>
+            </div>
+
+            <p class="character-name">YOU</p>
+          </div>
+          <!-- SPELL EFFECT -->
+          <div id="spellEffect"></div>
+        </div>
+
+        <!-- SPELLS -->
+        <div id="spellArea">
+          <p>Choose your spell</p>
+
+          <div class="spell-buttons">
+            <button class="spellBtn" data-spell="expelliarmus">
+              🪄 Expelliarmus
+            </button>
+
+            <button class="spellBtn" data-spell="incendio">🔥 Incendio</button>
+
+            <button class="spellBtn" data-spell="avada">
+              🟢 Avada Kedavra
+            </button>
+          </div>
+        </div>
+
+        <p id="battleMessage"></p>
+
+        <!-- DEFEATED -->
+        <div id="bossDefeated">
+          <h3>✨ BOSS DEFEATED ✨</h3>
+
+          <p>You made it through.</p>
+
+          <button id="finalMessageBtn">See What's Waiting →</button>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
