@@ -470,6 +470,44 @@ h1 {
   font-size: 15px;
 }
 
+/* Smilelometer */
+
+#smileMeter {
+  width: 260px;
+  margin: 18px auto 0;
+}
+
+#smileMeter p {
+  margin-bottom: 8px;
+  color: #d6b36a;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.meter-bar {
+  width: 100%;
+  height: 9px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(214, 179, 106, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#meterFill {
+  width: 0%;
+  height: 100%;
+  background: #d6b36a;
+  box-shadow: 0 0 12px rgba(214, 179, 106, 0.7);
+  transition: width 0.5s ease;
+}
+
+#meterText {
+  display: block;
+  margin-top: 5px;
+  color: #817988;
+  font-size: 12px;
+}
+
 /* Smile message */
 #smileMessage {
   max-width: 500px;
@@ -478,8 +516,20 @@ h1 {
   color: #cfc7d5;
   font-size: 16px;
   line-height: 1.7;
-  opacity: 0;
-  transform: translateY(10px);
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#smilemessage {
+  max-width: 500px;
+  text-shadow: 0 0 10px rgba(138, 67, 185, 0.25);
+  margin: 25px auto 20px;
+  color: #cfc7d5;
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 1;
+  transform: translateY(0px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
@@ -647,6 +697,39 @@ h1 {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+/* Level 3 Easter Egg */
+
+#cornerKey {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  font-size: 25px;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: 0.3s ease;
+  z-index: 20;
+}
+
+#cornerKey:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+#cornerKeyMessage {
+  position: fixed;
+  right: 25px;
+  bottom: 65px;
+  max-width: 260px;
+  text-align: right;
+  color: #d6b36a;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 20;
 }
 
 /* Animations */
@@ -886,6 +969,18 @@ h1 {
   pointer-events: auto;
 }
 
+/* Level 4 Easter Egg */
+
+#doorEasterMessage {
+  min-height: 25px;
+  margin-top: 15px;
+  color: #d6b36a;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
 /* ---------------- ANIMATIONS ---------------- */
 @keyframes doorwayGlow {
   0%,
@@ -918,7 +1013,12 @@ h1 {
   overflow: hidden;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle at center,#241533 0%,#100918 50%,#040307 100%);
+  background: radial-gradient(
+    circle at center,
+    #241533 0%,
+    #100918 50%,
+    #040307 100%
+  );
 }
 
 .level5-content {
@@ -944,7 +1044,11 @@ h1 {
   height: 280px;
   margin: 20px auto;
   border: 1px solid rgba(214, 179, 106, 0.15);
-  background: radial-gradient(circle at center,rgba(90, 50, 120, 0.12),transparent 70%);
+  background: radial-gradient(
+    circle at center,
+    rgba(90, 50, 120, 0.12),
+    transparent 70%
+  );
   overflow: hidden;
 }
 
@@ -1284,59 +1388,302 @@ h1 {
    SPELL EFFECT
 ========================= */
 #spellEffect {
-    position: absolute;
-    left: 18%;
-    top: 48%;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-    z-index: 10;
+  position: absolute;
+  left: 18%;
+  top: 48%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 10;
 }
 
 /* Basic magical projectile */
 .spell-projectile {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: spellFly 0.45s linear forwards;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spellFly 0.45s linear forwards;
 }
 
 /* Expelliarmus */
 .spell-expelliarmus {
-    background: #dff8ff;
-    box-shadow:0 0 8px #ffffff,0 0 18px #75dfff,0 0 35px #4fc3ff;
+  background: #dff8ff;
+  box-shadow: 0 0 8px #ffffff, 0 0 18px #75dfff, 0 0 35px #4fc3ff;
 }
 
 /* Incendio */
 .spell-incendio {
-    background: #fff3b0;
-    box-shadow:0 0 10px #fff,0 0 20px #ff9d2e,0 0 40px #ff4b00;
+  background: #fff3b0;
+  box-shadow: 0 0 10px #fff, 0 0 20px #ff9d2e, 0 0 40px #ff4b00;
 }
 
 /* Final green spell */
 .spell-avada {
-    width: 25px;
-    height: 25px;
-    background: #baffc8;
-    box-shadow:0 0 10px #ffffff, 0 0 25px #39ff68, 0 0 55px #00d83a,0 0 90px rgba(0, 255, 70, 0.6);
+  width: 25px;
+  height: 25px;
+  background: #baffc8;
+  box-shadow: 0 0 10px #ffffff, 0 0 25px #39ff68, 0 0 55px #00d83a,
+    0 0 90px rgba(0, 255, 70, 0.6);
+}
+
+/* Level 5 Easter Egg */
+
+#boss,
+#playerWizard {
+  cursor: pointer;
+}
+
+#boss:hover,
+#playerWizard:hover {
+  filter: brightness(1.15);
 }
 
 @keyframes spellFly {
-    0% {
-        left: 0;
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.3);
-    }
+  0% {
+    left: 0;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
 
-    15% {
-        opacity: 1;
-    }
+  15% {
+    opacity: 1;
+  }
 
-    100% {
-        left: 520px;
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-    }
+  100% {
+    left: 520px;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ---------------- FINAL MESSAGE ---------------- */
+
+#finalScene {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  text-align: center;
+
+  padding: 70px 20px;
+
+  background: radial-gradient(
+    circle at center,
+    #2a1d30 0%,
+    #120c18 55%,
+    #050408 100%
+  );
+}
+
+/* The letter */
+
+.final-content {
+  width: 90%;
+  max-width: 650px;
+
+  padding: 45px 55px 50px;
+
+  background: linear-gradient(
+    rgba(246, 232, 197, 0.96),
+    rgba(231, 211, 169, 0.96)
+  );
+
+  color: #2d241c;
+
+  border: 1px solid #b99b62;
+
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.55),
+    inset 0 0 35px rgba(120, 80, 30, 0.15);
+
+  position: relative;
+
+  animation: letterAppear 1.2s ease;
+}
+
+/* Little corners of the letter */
+
+.final-content::before {
+  content: "✦";
+
+  position: absolute;
+
+  top: 18px;
+  left: 22px;
+
+  color: #9d7b3f;
+  font-size: 18px;
+}
+
+.final-content::after {
+  content: "✦";
+
+  position: absolute;
+
+  bottom: 18px;
+  right: 22px;
+
+  color: #9d7b3f;
+  font-size: 18px;
+}
+
+/* Chapter label */
+
+#finalScene .level-label {
+  color: #8b6b35;
+
+  font-size: 12px;
+  letter-spacing: 4px;
+
+  margin-bottom: 25px;
+}
+
+/* Pengu image */
+
+.pengu-container {
+  width: 210px;
+  height: 250px;
+
+  margin: 0 auto 22px;
+
+  padding: 8px;
+
+  background: #f5ead0;
+
+  border: 1px solid #a98b55;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+
+  transform: rotate(-1deg);
+
+  animation: penguAppear 1s ease;
+}
+
+#penguImage {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+/* Pengu title */
+
+#finalScene h2 {
+  color: #382b20;
+
+  font-size: 30px;
+  font-weight: normal;
+
+  margin-bottom: 25px;
+
+  text-shadow: none;
+}
+
+/* Message */
+
+.pengu-message {
+  max-width: 520px;
+
+  margin: auto;
+
+  color: #40352b;
+
+  font-family: Georgia, serif;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  text-align: left;
+}
+
+.pengu-message p {
+  margin-bottom: 18px;
+
+  opacity: 0;
+
+  transform: translateY(8px);
+
+  animation: letterTextAppear 0.7s ease forwards;
+}
+
+/* Text appears one by one */
+
+.pengu-message p:nth-child(1) {
+  animation-delay: 0.5s;
+}
+
+.pengu-message p:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.pengu-message p:nth-child(3) {
+  animation-delay: 1.1s;
+}
+
+.pengu-message p:nth-child(4) {
+  animation-delay: 1.4s;
+}
+
+.pengu-message p:nth-child(5) {
+  animation-delay: 1.7s;
+}
+
+.pengu-message p:nth-child(6) {
+  animation-delay: 2s;
+}
+
+.pengu-message p:nth-child(7) {
+  animation-delay: 2.3s;
+}
+
+.pengu-message p:nth-child(8) {
+  animation-delay: 2.6s;
+}
+
+.pengu-message p:nth-child(9) {
+  animation-delay: 2.9s;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes penguAppear {
+  from {
+    opacity: 0;
+    transform: rotate(-4deg) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-1deg) scale(1);
+  }
+}
+
+@keyframes letterTextAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
