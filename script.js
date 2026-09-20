@@ -5,8 +5,18 @@ const startBtn = document.getElementById("startBtn");
 const openLevel2 = document.getElementById("openLevel2");
 
 function showScene(currentScene, nextScene) {
-  currentScene.classList.remove("active");
-  nextScene.classList.add("active");
+  const transition = document.getElementById("sceneTransition");
+
+  transition.classList.add("transitionActive");
+
+  setTimeout(function () {
+    currentScene.classList.remove("active");
+    nextScene.classList.add("active");
+  }, 500);
+
+  setTimeout(function () {
+    transition.classList.remove("transitionActive");
+  }, 1200);
 }
 
 /* Opening → Level 1 */
@@ -261,4 +271,40 @@ finalMessageBtn.addEventListener("click", function () {
     document.getElementById("level5"),
     document.getElementById("finalScene")
   );
+});
+
+/* ---------------- MAGIC WAND CURSOR ---------------- */
+
+const wandCursor = document.getElementById("wandCursor");
+const wandSparkle = document.getElementById("wandSparkle");
+
+document.addEventListener("mousemove", function (event) {
+  wandCursor.style.left = event.clientX + "px";
+  wandCursor.style.top = event.clientY + "px";
+
+  wandSparkle.style.left = event.clientX - 12 + "px";
+  wandSparkle.style.top = event.clientY + 12 + "px";
+
+  wandSparkle.style.opacity = "1";
+
+  wandSparkle.style.transform = "translate(-50%, -50%) scale(1)";
+});
+
+document.addEventListener("click", function (event) {
+  wandSparkle.style.left = event.clientX + "px";
+  wandSparkle.style.top = event.clientY + "px";
+
+  wandSparkle.style.opacity = "0";
+
+  wandSparkle.style.transform = "translate(-50%, -50%) scale(2.5)";
+});
+
+/* ---------------- HOGWARTS LOADING SCREEN ---------------- */
+
+window.addEventListener("load", function () {
+  const loadingScreen = document.getElementById("loadingScreen");
+
+  setTimeout(function () {
+    loadingScreen.classList.add("loadingDone");
+  }, 10000);
 });

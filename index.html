@@ -9,6 +9,30 @@
   </head>
 
   <body>
+    <!-- HOGWARTS LOADING SCREEN -->
+    <div id="loadingScreen">
+      <div class="loading-magic">
+        <div class="loading-symbol">✦</div>
+
+        <div class="loading-wand">
+          <div class="loading-wand-handle"></div>
+          <div class="loading-wand-tip"></div>
+        </div>
+
+        <p class="loading-small">✦ PREPARING ✦</p>
+
+        <h1>
+          YOUR MAGICAL<br />
+          JOURNEY
+        </h1>
+
+        <div class="loading-line">
+          <span></span>
+        </div>
+
+        <p class="loading-text">Please wait...</p>
+      </div>
+    </div>
     <!-- OPENING SCENE -->
     <section id="opening" class="scene active">
       <div class="opening-content">
@@ -269,42 +293,107 @@
 
     <!-- FINAL MESSAGE -->
     <section id="finalScene" class="scene">
-      <div class="final-content">
-        <p class="level-label">✦ THE END ✦</p>
+      <!-- Magical background -->
+      <div class="magic-particles"></div>
 
-        <div class="pengu-container">
-          <img src="pengu.jpg" id="penguImage" alt="Pengu" />
+      <div class="final-scene-content">
+        <p class="final-chapter">✦ THE LAST PAGE ✦</p>
+
+        <!-- Magical Book -->
+        <div class="magic-book">
+          <div class="book-glow"></div>
+
+          <div class="book">
+            <!-- Left page -->
+            <div class="book-page left-page">
+              <div class="page-decoration">✦</div>
+
+              <div class="pengu-photo">
+                <img src="pengu.jpg" alt="Pengu" />
+              </div>
+
+              <h2>🐧 Pengu</h2>
+
+              <div class="quill">🪶</div>
+            </div>
+
+            <!-- Right page -->
+            <div class="book-page right-page">
+              <div class="page-decoration">✦</div>
+
+              <div class="pengu-message">
+                <p>“Parkhiiii… you came for me. 🥹❤️</p>
+
+                <p>I knew you would.</p>
+
+                <p>
+                  So now that we're safe, I have one tiny thing to tell you…
+                </p>
+
+                <p>Don’t worry so much about what comes next, okay?</p>
+
+                <p>
+                  You’re doing better than you think, and there are still so
+                  many beautiful things waiting for you. ✨
+                </p>
+
+                <p>
+                  Just take it one day at a time, keep that little smile of
+                  yours, and trust yourself a little more.
+                </p>
+
+                <p>And whenever things feel heavy…</p>
+
+                <p>you know where to find me. 🐧❤️</p>
+
+                <p>Now come on, I think it’s time for us to sleep. 😴✨”</p>
+              </div>
+
+              <div class="quill-writing">✒</div>
+            </div>
+          </div>
         </div>
 
-        <h2>🐧 Pengu</h2>
+        <!-- Ending -->
+        <div class="final-ending">
+          <div class="ending-line"></div>
 
-        <div class="pengu-message">
-          <p>“Parkhiiii… you came for me. 🥹❤️</p>
+          <p>✦ THE END... FOR NOW ✦</p>
 
-          <p>I knew you would.</p>
-
-          <p>So now that we're safe, I have one tiny thing to tell you…</p>
-
-          <p>Don't worry so much about what comes next, okay?</p>
-
-          <p>
-            You're doing better than you think, and there are still so many
-            beautiful things waiting for you. ✨
-          </p>
-
-          <p>
-            Just take it one day at a time, keep that little smile of yours, and
-            trust yourself a little more.
-          </p>
-
-          <p>And whenever things feel heavy…</p>
-
-          <p>you know where to find me. 🐧❤️</p>
-
-          <p>Now come on, I think it's time for us to sleep. 😴✨</p>
+          <div class="ending-sparkle">✨</div>
         </div>
       </div>
     </section>
+
+    <!-- Magic Wand Cursor -->
+    <div id="wandCursor">
+      <div class="wand-handle"></div>
+      <div class="wand-tip"></div>
+      <div class="wand-magic"></div>
+    </div>
+
+    <div id="wandSparkle"></div>
+
+    <!-- MAGICAL SCENE TRANSITION -->
+
+    <div id="sceneTransition">
+      <div class="transition-wand">
+        <div class="transition-wand-handle"></div>
+        <div class="transition-wand-tip"></div>
+        <div class="transition-wand-glow"></div>
+      </div>
+
+      <div class="magic-burst">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>

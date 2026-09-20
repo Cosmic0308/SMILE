@@ -1458,225 +1458,368 @@ h1 {
   }
 }
 
-/* ---------------- FINAL MESSAGE ---------------- */
-
+/* =====================================================
+   FINAL SCENE — THE LAST PAGE
+   ===================================================== */
 #finalScene {
   position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
-
+  overflow: hidden;
+  min-height: 100vh;
   justify-content: center;
-  align-items: flex-start;
-
+  align-items: center;
   text-align: center;
-
-  padding: 70px 20px;
-
   background: radial-gradient(
     circle at center,
-    #2a1d30 0%,
-    #120c18 55%,
-    #050408 100%
+    #251a32 0%,
+    #100a17 55%,
+    #040308 100%
   );
 }
 
-/* The letter */
-
-.final-content {
-  width: 90%;
-  max-width: 650px;
-
-  padding: 45px 55px 50px;
-
-  background: linear-gradient(
-    rgba(246, 232, 197, 0.96),
-    rgba(231, 211, 169, 0.96)
+/* -----------------------------------------------------
+   Magical background
+   ----------------------------------------------------- */
+#finalScene::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(214, 179, 106, 0.12),
+    transparent 70%
   );
+  filter: blur(20px);
+  pointer-events: none;
+}
 
-  color: #2d241c;
+/* Floating magical particles */
+.magic-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+      circle,
+      rgba(255, 224, 145, 0.8) 1px,
+      transparent 2px
+    ),
+    radial-gradient(circle, rgba(255, 255, 255, 0.6) 1px, transparent 2px),
+    radial-gradient(circle, rgba(214, 179, 106, 0.5) 1px, transparent 2px);
+  background-size: 120px 140px, 180px 190px, 230px 210px;
+  animation: particlesFloat 12s linear infinite;
+  opacity: 0.55;
+}
 
-  border: 1px solid #b99b62;
-
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.55),
-    inset 0 0 35px rgba(120, 80, 30, 0.15);
-
+/* -----------------------------------------------------
+   Main content
+   ----------------------------------------------------- */
+.final-scene-content {
   position: relative;
-
-  animation: letterAppear 1.2s ease;
+  z-index: 5;
+  width: 95%;
+  max-width: 1050px;
+  padding: 30px 0;
+  animation: finalSceneAppear 1.5s ease;
 }
 
-/* Little corners of the letter */
-
-.final-content::before {
-  content: "✦";
-
-  position: absolute;
-
-  top: 18px;
-  left: 22px;
-
-  color: #9d7b3f;
-  font-size: 18px;
-}
-
-.final-content::after {
-  content: "✦";
-
-  position: absolute;
-
-  bottom: 18px;
-  right: 22px;
-
-  color: #9d7b3f;
-  font-size: 18px;
-}
-
-/* Chapter label */
-
-#finalScene .level-label {
-  color: #8b6b35;
-
-  font-size: 12px;
-  letter-spacing: 4px;
-
+/* Chapter title */
+.final-chapter {
+  color: #d6b36a;
+  font-size: 13px;
+  letter-spacing: 5px;
   margin-bottom: 25px;
+  text-shadow: 0 0 15px rgba(214, 179, 106, 0.4);
 }
 
-/* Pengu image */
+/* =====================================================
+   MAGIC BOOK
+   ===================================================== */
+.magic-book {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
 
-.pengu-container {
-  width: 210px;
-  height: 250px;
+/* Golden glow behind book */
+.book-glow {
+  position: absolute;
+  width: 85%;
+  height: 80%;
+  left: 7.5%;
+  top: 10%;
+  background: radial-gradient(
+    ellipse,
+    rgba(214, 179, 106, 0.2),
+    transparent 70%
+  );
+  filter: blur(25px);
+  animation: bookGlow 3s ease-in-out infinite;
+}
 
-  margin: 0 auto 22px;
+/* Book */
+.book {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 560px;
+  border-radius: 8px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(214, 179, 106, 0.12);
+  transform: perspective(1200px) rotateX(2deg);
+  animation: bookAppear 1.4s ease;
+}
 
-  padding: 8px;
+/* -----------------------------------------------------
+   Book pages
+   ----------------------------------------------------- */
+.book-page {
+  position: relative;
+  width: 50%;
+  padding: 45px 40px;
+  background: linear-gradient(135deg, #f4e8c8, #e6d2a6);
+  color: #392d22;
+  overflow: hidden;
+}
 
-  background: #f5ead0;
+/* Left page */
+.left-page {
+  border-radius: 8px 0 0 8px;
+  box-shadow: inset -15px 0 25px rgba(80, 50, 20, 0.15);
+}
 
+/* Right page */
+.right-page {
+  border-radius: 0 8px 8px 0;
+  box-shadow: inset 15px 0 25px rgba(80, 50, 20, 0.15);
+}
+
+/* Center book fold */
+.book::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to right,
+    rgba(80, 50, 20, 0.15),
+    rgba(255, 255, 255, 0.5),
+    rgba(80, 50, 20, 0.15)
+  );
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Page decoration */
+
+.page-decoration {
+  color: #a3844d;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* =====================================================
+   PENGU PHOTO
+   ===================================================== */
+
+.pengu-photo {
+  width: 230px;
+  height: 300px;
+  margin: 20px auto 25px;
+  padding: 9px;
+  background: #f8efd9;
   border: 1px solid #a98b55;
-
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-
-  transform: rotate(-1deg);
-
-  animation: penguAppear 1s ease;
+  box-shadow: 0 8px 20px rgba(50, 30, 10, 0.25);
+  transform: rotate(-2deg);
+  transition: transform 0.5s ease;
 }
 
-#penguImage {
+.pengu-photo:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.pengu-photo img {
   width: 100%;
   height: 100%;
-
-  object-fit: cover;
-
   display: block;
+  object-fit: contain;
 }
 
-/* Pengu title */
+/* Pengu heading */
 
-#finalScene h2 {
-  color: #382b20;
-
-  font-size: 30px;
+.left-page h2 {
+  color: #4a3827;
+  font-size: 28px;
   font-weight: normal;
-
-  margin-bottom: 25px;
-
-  text-shadow: none;
+  margin-top: 10px;
 }
 
-/* Message */
+/* =====================================================
+   MESSAGE
+   ===================================================== */
 
 .pengu-message {
-  max-width: 520px;
-
-  margin: auto;
-
-  color: #40352b;
-
-  font-family: Georgia, serif;
-
-  font-size: 16px;
-  line-height: 1.8;
-
   text-align: left;
+
+  max-width: 420px;
+
+  margin: 15px auto 0;
+
+  color: #44372a;
+
+  font-size: 15px;
+
+  line-height: 1.65;
 }
 
 .pengu-message p {
-  margin-bottom: 18px;
+  margin-bottom: 15px;
 
   opacity: 0;
 
   transform: translateY(8px);
 
-  animation: letterTextAppear 0.7s ease forwards;
+  animation: messageWrite 0.7s ease forwards;
 }
 
-/* Text appears one by one */
+/* Message timing */
 
 .pengu-message p:nth-child(1) {
-  animation-delay: 0.5s;
+  animation-delay: 0.7s;
 }
 
 .pengu-message p:nth-child(2) {
-  animation-delay: 0.8s;
+  animation-delay: 1s;
 }
 
 .pengu-message p:nth-child(3) {
-  animation-delay: 1.1s;
+  animation-delay: 1.3s;
 }
 
 .pengu-message p:nth-child(4) {
-  animation-delay: 1.4s;
+  animation-delay: 1.6s;
 }
 
 .pengu-message p:nth-child(5) {
-  animation-delay: 1.7s;
+  animation-delay: 1.9s;
 }
 
 .pengu-message p:nth-child(6) {
-  animation-delay: 2s;
+  animation-delay: 2.2s;
 }
 
 .pengu-message p:nth-child(7) {
-  animation-delay: 2.3s;
+  animation-delay: 2.5s;
 }
 
 .pengu-message p:nth-child(8) {
-  animation-delay: 2.6s;
+  animation-delay: 2.8s;
 }
 
 .pengu-message p:nth-child(9) {
-  animation-delay: 2.9s;
+  animation-delay: 3.1s;
 }
 
-/* ---------------- ANIMATIONS ---------------- */
+/* =====================================================
+   QUILL
+   ===================================================== */
+.quill {
+  font-size: 30px;
+  color: #8c6d38;
+  margin-top: 15px;
+  transform: rotate(-20deg);
+  opacity: 0.7;
+}
 
-@keyframes letterAppear {
+.quill-writing {
+  position: absolute;
+  right: 30px;
+  bottom: 25px;
+  font-size: 28px;
+  color: #8c6d38;
+  transform: rotate(-20deg);
+  opacity: 0.55;
+}
+
+/* =====================================================
+   ENDING
+   ===================================================== */
+
+.final-ending {
+  margin-top: 28px;
+  color: #d6b36a;
+  font-size: 13px;
+  letter-spacing: 4px;
+  opacity: 0;
+  animation: endingAppear 1s ease forwards;
+  animation-delay: 4s;
+}
+
+.ending-line {
+  width: 100px;
+  height: 1px;
+  margin: 0 auto 15px;
+  background: linear-gradient(to right, transparent, #d6b36a, transparent);
+}
+
+.ending-sparkle {
+  margin-top: 12px;
+  font-size: 18px;
+  animation: sparklePulse 2s ease-in-out infinite;
+}
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+
+@keyframes finalSceneAppear {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.97);
+    transform: translateY(25px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
-@keyframes penguAppear {
+@keyframes bookAppear {
   from {
     opacity: 0;
-    transform: rotate(-4deg) scale(0.9);
+    transform: perspective(1200px) rotateX(8deg) scale(0.94);
   }
 
   to {
     opacity: 1;
-    transform: rotate(-1deg) scale(1);
+    transform: perspective(1200px) rotateX(2deg) scale(1);
   }
 }
 
-@keyframes letterTextAppear {
+@keyframes bookGlow {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes messageWrite {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -1685,5 +1828,604 @@ h1 {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes particlesFloat {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-80px);
+  }
+}
+
+@keyframes endingAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sparklePulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+}
+
+/* =====================================================
+   MOBILE
+   ==================================================== */
+@media (max-width: 700px) {
+  #finalScene {
+    overflow-y: auto;
+    padding: 40px 15px;
+  }
+
+  .final-scene-content {
+    width: 100%;
+  }
+
+  .book {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .book-page {
+    width: 100%;
+  }
+
+  .left-page {
+    border-radius: 8px 8px 0 0;
+  }
+
+  .right-page {
+    border-radius: 0 0 8px 8px;
+  }
+
+  .book::after {
+    display: none;
+  }
+
+  .pengu-photo {
+    width: 190px;
+    height: 250px;
+  }
+
+  .pengu-message {
+    max-width: 100%;
+  }
+}
+
+/* ---------------- CSS MAGIC WAND ---------------- */
+#wandCursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 70px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-10px, -7px) rotate(-35deg);
+  transition: left 0.08s linear, top 0.08s linear;
+}
+
+/* Wand handle */
+.wand-handle {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 48px;
+  height: 6px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #24150d, #684126, #3a2112);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Small grip details */
+.wand-handle::before,
+.wand-handle::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 8px;
+  top: -1px;
+  border-radius: 2px;
+  background: #8a5a32;
+}
+
+.wand-handle::before {
+  left: 12px;
+}
+
+.wand-handle::after {
+  left: 25px;
+}
+
+/* Wand tip */
+.wand-tip {
+  position: absolute;
+  left: 43px;
+  top: 5px;
+  width: 22px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #6d4425, #c59b5b, #f3d78d);
+  box-shadow: 0 0 5px rgba(214, 179, 106, 0.6);
+}
+
+/* Magical glow at the tip */
+.wand-magic {
+  position: absolute;
+  left: 64px;
+  top: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff4c7;
+  box-shadow: 0 0 5px #fff, 0 0 12px #d6b36a, 0 0 22px rgba(214, 179, 106, 0.8);
+  animation: wandGlow 1.2s ease-in-out infinite;
+}
+
+/* Cursor sparkle */
+#wandSparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff3bd;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  box-shadow: 0 0 6px #fff, 0 0 14px #d6b36a;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+@keyframes wandGlow {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+/* Hide on touch devices */
+@media (hover: none) {
+  #wandCursor,
+  #wandSparkle {
+    display: none;
+  }
+}
+
+/* =====================================================
+   HOGWARTS LOADING SCREEN
+   ===================================================== */
+#loadingScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(
+    circle at center,
+    #21172d 0%,
+    #0d0813 55%,
+    #030207 100%
+  );
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* When loading is finished */
+#loadingScreen.loadingDone {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Main loading content */
+.loading-magic {
+  position: relative;
+  animation: loadingAppear 1.2s ease;
+}
+
+/* Floating magical symbol */
+.loading-symbol {
+  color: #d6b36a;
+  font-size: 28px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px #d6b36a, 0 0 25px rgba(214, 179, 106, 0.5);
+  animation: loadingSparkle 2s ease-in-out infinite;
+}
+
+/* CSS wand */
+.loading-wand {
+  position: relative;
+  width: 90px;
+  height: 20px;
+  margin: 0 auto 30px;
+  transform: rotate(-35deg);
+}
+
+/* Handle */
+.loading-wand-handle {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 60px;
+  height: 7px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #24150d, #684126, #3a2112);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Tip */
+.loading-wand-tip {
+  position: absolute;
+  left: 55px;
+  top: 8px;
+  width: 30px;
+  height: 5px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #704726, #d6b36a, #fff0b0);
+  box-shadow: 0 0 8px rgba(214, 179, 106, 0.8);
+}
+
+/* Small title */
+.loading-small {
+  color: #d6b36a;
+  font-size: 12px;
+  letter-spacing: 5px;
+  margin-bottom: 18px;
+}
+
+/* Main title */
+#loadingScreen h1 {
+  color: #eee7d9;
+  font-family: Georgia, serif;
+  font-size: 38px;
+  font-weight: normal;
+  line-height: 1.25;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(214, 179, 106, 0.2);
+}
+
+/* Magical line */
+.loading-line {
+  width: 180px;
+  height: 1px;
+  margin: 25px auto 15px;
+  background: linear-gradient(to right, transparent, #d6b36a, transparent);
+  position: relative;
+}
+
+/* Moving light */
+.loading-line span {
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 20px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff2b5;
+  box-shadow: 0 0 8px #fff, 0 0 15px #d6b36a;
+  animation: loadingProgress 1.6s ease-in-out infinite;
+}
+
+/* Loading text */
+.loading-text {
+  color: #817988;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+/* -----------------------------------------------------
+   Animations
+   ----------------------------------------------------- */
+@keyframes loadingAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadingSparkle {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes loadingProgress {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: 160px;
+  }
+}
+
+/* =====================================================
+   CSS-ONLY MAGICAL SCENE TRANSITION
+   ===================================================== */
+
+#sceneTransition {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center,rgba(214, 179, 106, 0.18),rgba(5, 4, 8, 0.98) 70%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Active */
+
+#sceneTransition.transitionActive {
+  visibility: visible;
+  animation: transitionFade 1.2s ease forwards;
+}
+
+/* =====================================================
+   WAND
+   ===================================================== */
+.transition-wand {
+  position: absolute;
+  width: 120px;
+  height: 20px;
+  transform: rotate(-35deg) translateX(-120px);
+  opacity: 0;
+}
+
+/* Wooden handle */
+.transition-wand-handle {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 72px;
+  height: 7px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #1c1009, #704526, #3b2111);
+  box-shadow: 0 0 8px rgba(90, 50, 20, 0.5);
+}
+
+/* Wooden grip rings */
+.transition-wand-handle::before,
+.transition-wand-handle::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  width: 4px;
+  height: 9px;
+  border-radius: 3px;
+  background: #9b6837;
+}
+
+.transition-wand-handle::before {
+  left: 20px;
+}
+
+.transition-wand-handle::after {
+  left: 43px;
+}
+
+/* Wand tip */
+.transition-wand-tip {
+  position: absolute;
+  left: 67px;
+  top: 8px;
+  width: 43px;
+  height: 5px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #684124, #c69d5d, #fff1ad);
+  box-shadow: 0 0 10px #d6b36a;
+}
+
+/* Magical glow */
+.transition-wand-glow {
+  position: absolute;
+  left: 105px;
+  top: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff7cf;
+  box-shadow: 0 0 8px #fff, 0 0 18px #d6b36a, 0 0 35px rgba(214, 179, 106, 0.9);
+  animation: wandPulse 0.5s ease-in-out infinite alternate;
+}
+
+/* =====================================================
+   MAGIC BURST
+   ===================================================== */
+.magic-burst {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+
+/* Individual magical rays */
+.magic-burst span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 4px;
+  height: 35px;
+  border-radius: 5px;
+  background: linear-gradient(to top, transparent, #fff3bd, transparent);
+  box-shadow: 0 0 10px #d6b36a;
+  transform-origin: center bottom;
+  opacity: 0;
+}
+
+/* Eight directions */
+
+.magic-burst span:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.magic-burst span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.magic-burst span:nth-child(3) {
+  transform: rotate(90deg);
+}
+
+.magic-burst span:nth-child(4) {
+  transform: rotate(135deg);
+}
+
+.magic-burst span:nth-child(5) {
+  transform: rotate(180deg);
+}
+
+.magic-burst span:nth-child(6) {
+  transform: rotate(225deg);
+}
+
+.magic-burst span:nth-child(7) {
+  transform: rotate(270deg);
+}
+
+.magic-burst span:nth-child(8) {
+  transform: rotate(315deg);
+}
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
+
+#sceneTransition.transitionActive .transition-wand {
+  animation: wandCast 0.9s ease forwards;
+}
+
+#sceneTransition.transitionActive .magic-burst span {
+  animation: magicRay 0.9s ease forwards;
+}
+
+/* Screen */
+
+@keyframes transitionFade {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Wand movement */
+
+@keyframes wandCast {
+  0% {
+    opacity: 0;
+
+    transform: rotate(-35deg) translateX(-120px);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 1;
+
+    transform: rotate(-35deg) translateX(30px);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: rotate(-35deg) translateX(120px);
+  }
+}
+
+/* Magical glow */
+
+@keyframes wandPulse {
+  from {
+    transform: scale(0.7);
+  }
+
+  to {
+    transform: scale(1.3);
+  }
+}
+
+/* Rays */
+
+@keyframes magicRay {
+  0% {
+    opacity: 0;
+
+    height: 10px;
+
+    transform-origin: center bottom;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+
+    height: 100px;
   }
 }
